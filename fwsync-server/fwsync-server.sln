@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "jfsync-server", "jfsync-server.vcxproj", "{A1C93745-0311-45C6-ACA1-66A4EECCB250}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "fwsync-server", "fwsync-server.vcxproj", "{A1C93745-0311-45C6-ACA1-66A4EECCB250}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
