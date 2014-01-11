@@ -6,10 +6,6 @@
 // system modules
 #include <iostream>
 #include <fstream>
-#include <time.h>
-#include <vector>
-#include <sstream>
-#include <string>
 using namespace std;
 
 // our own modules
@@ -18,17 +14,6 @@ using namespace std;
 // constants
 static const int MAXPATH = 256; // Maximale lengte van padnaam
 static const int TCP_PORT = 1080;
-
-void strsplit(string str, vector<string> &tokens)
-{
-	string buf;
-	stringstream ss(str); // Insert the string into a stream
-
-	//vector<string> tokens; // Create vector to hold our words
-
-	while (ss >> buf)
-		tokens.push_back(buf);
-}
 
 //=============================================================================
 void handle(Socket *socket)
@@ -39,46 +24,15 @@ void handle(Socket *socket)
 	cout << "Connected!\r\n";
 
 	// say hello to client
-	socket->write("HELO JFSync_0.1\r\n");
+	socket->write("Hello\r\n");
+
 	// read first line of request
-	while (socket->readline(line, MAXPATH) > 0)
+	if (socket->readline(line, MAXPATH))
 	{
-		vector<string> params = *new vector<string>();
-		
-		strsplit(line, params);
-
 		// echo request to terminal
-		cout << "Got request: " << params[0] << "\r\n";
-		
-		if (params.size() > 0)
-		{
-			if (params[0] == "INFO")
-			{
-				time_t     now = time(0);
-				struct tm  tstruct;
-				char       buf[80];
-				localtime_s(&tstruct, &now);
-				
-				strftime(buf, sizeof(buf), "%Y%m%d_%X", &tstruct);
-				
-				socket->write("JFSync Server 0.1a ");
-				socket->writeline(buf);
-
-				delete buf;
-			}
-			else if (params[0] == "QUIT")
-			{
-				socket->write("BYE\r\n");
-				socket->close();
-				delete socket;
-				return;
-			}
-		}
-		
-		socket->write(line);
-		socket->write(" OK\r\n");
-
-		//delete params;
+		cout << "Get request: " << line << "\r\n";
+		// say bye to client
+		socket->write("BYE!\r\n");
 	}
 	// close and delete socket (created by server's accept)
 	delete socket;
@@ -102,4 +56,3 @@ int main()
 	}
 	return 0;
 }
-
