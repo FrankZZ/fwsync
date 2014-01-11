@@ -1,4 +1,4 @@
-jfsync-server
+fwsync-server
 =============
 
-FTP-like server for use with jfsync-client
+FTP-like server for use with fwsync-client
