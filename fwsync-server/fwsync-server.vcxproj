@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{A1C93745-0311-45C6-ACA1-66A4EECCB250}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>jfsyncserver</RootNamespace>
+    <RootNamespace>fwsyncserver</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -79,18 +79,32 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="jfsync-server.h" />
+    <ClInclude Include="CommandFactory.h" />
+    <ClInclude Include="CommandHandler.h" />
+    <ClInclude Include="constants.h" />
+    <ClInclude Include="fwsync-server.h" />
+    <ClInclude Include="GetCommandHandler.h" />
+    <ClInclude Include="InfoCommandHandler.h" />
+    <ClInclude Include="QuitCommandHandler.h" />
     <ClInclude Include="socket.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="utility.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="jfsync-server.cpp" />
+    <ClCompile Include="CommandFactory.cpp" />
+    <ClCompile Include="CommandHandler.cpp" />
+    <ClCompile Include="GetCommandHandler.cpp" />
+    <ClCompile Include="fwsync-server.cpp" />
+    <ClCompile Include="InfoCommandHandler.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="QuitCommandHandler.cpp" />
     <ClCompile Include="socket.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="utility.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

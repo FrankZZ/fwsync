@@ -1,12 +1,24 @@
 #pragma once
+
 #include <string>
-#inc
 #include <iostream>
+#include <time.h>
+#include <vector>
+#include <sstream>
+#include "constants.h"
+#include "utility.h"
+#include "socket.h"
+#include "CommandHandler.h"
+#include "CommandFactory.h"
 
-class Server
+namespace fwsync
 {
-	void strsplit(std::string line);
+	class Server
+	{
+		private:
+			void handle(Socket *socket);
 
-	public:
-		void handle(std::Socket *socket);
-};
+		public:
+			void listen(int iPort);
+	};
+}

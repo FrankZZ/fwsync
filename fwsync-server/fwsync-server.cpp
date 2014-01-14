@@ -1,58 +1,60 @@
-//=============================================================================
-// A very basic tcp-server
-// (c) 8-12-2010, Frans Spijkerman, Avans Hogeschool
-//=============================================================================
 
-// system modules
-#include <iostream>
-#include <fstream>
-using namespace std;
+#include "fwsync-server.h"
 
-// our own modules
-#include "socket.h"
-
-// constants
-static const int MAXPATH = 256; // Maximale lengte van padnaam
-static const int TCP_PORT = 1080;
-
-//=============================================================================
-void handle(Socket *socket)
-//=============================================================================
+namespace fwsync
 {
-	char line[MAXPATH + 1];
-
-	cout << "Connected!\r\n";
-
-	// say hello to client
-	socket->write("Hello\r\n");
-
-	// read first line of request
-	if (socket->readline(line, MAXPATH))
+	void Server::listen(int iPort)
 	{
-		// echo request to terminal
-		cout << "Get request: " << line << "\r\n";
-		// say bye to client
-		socket->write("BYE!\r\n");
-	}
-	// close and delete socket (created by server's accept)
-	delete socket;
-}
+		ServerSocket serverSocket(iPort);
+		
+		cout << "FWSync Server listening...\r\n";
+		
+		while (Socket* socket = serverSocket.accept())
+		{
+			cout << "Incoming Client\r\n";
 
-//=============================================================================
-// Example of a tcp-server
-//=============================================================================
-int main()
-//=============================================================================
-{
-	// CREATE A SERVER SOCKET 
-	ServerSocket serverSocket(TCP_PORT);
-	// WAIT FOR CONNECTION FROM CLIENT; WILL CREATE NEW SOCKET
-	cout << "Server listening\r\n";
-	while (Socket *socket = serverSocket.accept())
-	{
-		// COMMUNICATE WITH CLIENT OVER NEW SOCKET
-		handle(socket);
-		cout << "Server listening again\r\n";
+			this->handle(socket);
+
+			delete socket;
+
+			cout << "Listening again...\r\n";
+		}
 	}
-	return 0;
+
+	void Server::handle(Socket *socket)
+	{
+		char line[MAXPATH + 1];
+
+		cout << "Connected!\r\n";
+
+		// say hello to client
+		socket->write("Hello FWSync_0.1\r\n");
+
+
+		// read first line of request
+		while (socket->readline(line, MAXPATH) > 0)
+		{
+			vector<string> params = *new vector<string>();
+			cout << line << "\r\n";
+
+			strsplit(line, params);
+
+			if (params.size() > 0)
+				for (int i = 0; i < params[0].length(); i++)
+					params[0][i] = tolower(params[0][i]);
+
+			// echo request to terminal
+			cout << "Got request: " << params[0] << "\r\n";
+
+			CommandHandler* pCommand = CommandFactory::create(params[0]);
+
+			if (pCommand != NULL)
+			{
+				pCommand->process(socket, params);
+			}
+			else
+				socket->writeline("Unknown command");
+		}
+	}
+
 }

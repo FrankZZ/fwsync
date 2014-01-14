@@ -19,49 +19,53 @@
 #include <winsock2.h>
 using namespace std;
 
-//=============================================================================
-class Socket
-	//=============================================================================
+namespace fwsync
 {
-protected:
-	SOCKET sok;
 
-public:
-	Socket() : sok(0){}
-	Socket(SOCKET sok) : sok(sok) {}
-	~Socket() { if (sok > 0)	closesocket(sok); };
-
-	void set(SOCKET sok) { this->sok = sok; }
-	void close() { closesocket(sok); sok = 0; };
-
-	// READ NUMBER OF CHARACTERS
-	size_t read(char *buf, size_t maxlen);
-	size_t read(wchar_t *buf, size_t maxlen);
-
-	// READ LINE OF CHARACTERS
-	size_t readline(char *buf, size_t maxlen);
-	size_t readline(wchar_t *buf, size_t maxlen);
-
-	void write(const char *buf, size_t len);
-	void write(const char *buf);
-	void write(const wchar_t *buf);
-	void Socket::writeline(const wchar_t *buf);
-	void Socket::writeline(const char *buf);
-};
-
-//=============================================================================
-class ServerSocket : public Socket
 	//=============================================================================
-{
-public:
-	ServerSocket(int port);
-	Socket *accept();
-};
+	class Socket
+		//=============================================================================
+	{
+	protected:
+		SOCKET sok;
 
-//=============================================================================
-class ClientSocket : public Socket
+	public:
+		Socket() : sok(0){}
+		Socket(SOCKET sok) : sok(sok) {}
+		~Socket() { if (sok > 0)	closesocket(sok); };
+
+		void set(SOCKET sok) { this->sok = sok; }
+		void close() { closesocket(sok); sok = 0; };
+
+		// READ NUMBER OF CHARACTERS
+		size_t read(char *buf, size_t maxlen);
+		size_t read(wchar_t *buf, size_t maxlen);
+
+		// READ LINE OF CHARACTERS
+		size_t readline(char *buf, size_t maxlen);
+		size_t readline(wchar_t *buf, size_t maxlen);
+
+		void write(const char *buf, size_t len);
+		void write(const char *buf);
+		void write(const wchar_t *buf);
+		void Socket::writeline(const wchar_t *buf);
+		void Socket::writeline(const char *buf);
+	};
+
 	//=============================================================================
-{
-public:
-	ClientSocket(const char *host, int port);
-};
+	class ServerSocket : public Socket
+		//=============================================================================
+	{
+	public:
+		ServerSocket(int port);
+		Socket *accept();
+	};
+
+	//=============================================================================
+	class ClientSocket : public Socket
+		//=============================================================================
+	{
+	public:
+		ClientSocket(const char *host, int port);
+	};
+}
