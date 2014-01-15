@@ -15,10 +15,14 @@
 //	Socket to connect to a server on a tcp-port
 //=============================================================================
 
-#include <iostream>
-#include <winsock2.h>
-using namespace std;
+#if defined(__APPLE__) || defined(__linux__)
+	typedef int SOCKET;
+#else // Windows
+	#include <winsock2.h>
+#endif
 
+#include <iostream>
+using namespace std;
 namespace fwsync
 {
 
@@ -32,10 +36,10 @@ namespace fwsync
 	public:
 		Socket() : sok(0){}
 		Socket(SOCKET sok) : sok(sok) {}
-		~Socket() { if (sok > 0)	closesocket(sok); };
+		~Socket() { if (sok > 0) close(); };
 
 		void set(SOCKET sok) { this->sok = sok; }
-		void close() { closesocket(sok); sok = 0; };
+		void close();
 
 		// READ NUMBER OF CHARACTERS
 		size_t read(char *buf, size_t maxlen);
@@ -48,8 +52,8 @@ namespace fwsync
 		void write(const char *buf, size_t len);
 		void write(const char *buf);
 		void write(const wchar_t *buf);
-		void Socket::writeline(const wchar_t *buf);
-		void Socket::writeline(const char *buf);
+		void writeline(const wchar_t *buf);
+		void writeline(const char *buf);
 	};
 
 	//=============================================================================

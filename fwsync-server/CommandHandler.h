@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "socket.h"
+#include "Socket.h"
 #include <vector>
 
 namespace fwsync

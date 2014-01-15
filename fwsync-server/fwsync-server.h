@@ -7,7 +7,7 @@
 #include <sstream>
 #include "constants.h"
 #include "utility.h"
-#include "socket.h"
+#include "Socket.h"
 #include "CommandHandler.h"
 #include "CommandFactory.h"
 
