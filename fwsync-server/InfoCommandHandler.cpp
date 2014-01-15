@@ -26,6 +26,7 @@ namespace fwsync
 
 		socket->write("FWSync Server 0.1a");
 		socket->writeline(buf);
+		socket->writeline("");
 
 	}
 
