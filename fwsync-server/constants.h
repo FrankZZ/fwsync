@@ -12,6 +12,13 @@ namespace fwsync
 		"\\";
 #endif
 
+	static const char* OSRUNNING =
+#if defined(__APPLE__) || defined(__linux__)
+		"UNIX";
+#else
+		"Windows";
+#endif
+
 	static const int BUFFERSIZE = 1024;
 
 }

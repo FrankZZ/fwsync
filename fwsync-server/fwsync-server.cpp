@@ -28,7 +28,9 @@ namespace fwsync
 		cout << "Connected!\r\n";
 
 		// say hello to client
-		socket->writeline("Hello FWSync\n");
+		socket->write("FWSync server running on ");
+		socket->write(OSRUNNING);
+		socket->writeline("\n");
 
 
 		// read first line of request

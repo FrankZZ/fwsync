@@ -20,6 +20,11 @@ namespace fwsync
 	{
 		ifstream isFile(params[1], ifstream::binary);
 
+		if (!isFile.is_open())
+		{
+			throw("cannot open file");
+		}
+
 		char* buff = new char[BUFFERSIZE + 1];
 
 		streampos end;
@@ -28,12 +33,8 @@ namespace fwsync
 		end = isFile.tellg();
 		isFile.seekg(0, isFile.beg);
 		
+		// Send total size to client
 		socket->writeline(to_string(end).c_str());
-
-		if (!isFile.is_open())
-		{
-			throw("cannot open file");
-		}
 
 		while (isFile.good())
 		{
