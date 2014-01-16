@@ -22,27 +22,40 @@ namespace fwsync
 
 		if (!isFile.is_open())
 		{
+			socket->writeline("-1");
 			throw("cannot open file");
 		}
 
-		char* buff = new char[BUFFERSIZE + 1];
+		char buff[BUFFERSIZE];
 
-		streampos end;
+		int iFileSize;
 
 		isFile.seekg(0, isFile.end);
-		end = isFile.tellg();
+		iFileSize = isFile.tellg();
 		isFile.seekg(0, isFile.beg);
 		
 		// Send total size to client
-		socket->writeline(to_string(end).c_str());
+		socket->writeline(to_string(iFileSize).c_str());
+		
 
-		while (isFile.good())
+		int iBytesToRead = iFileSize;
+
+		while (iBytesToRead > 0)
 		{
-			isFile.get(buff, BUFFERSIZE);
-			socket->write(buff);
-		}
+			int iBytesToReadNow = iBytesToRead > BUFFERSIZE ? BUFFERSIZE : iBytesToRead;
 
-		delete[] buff;
+			isFile.read(buff, iBytesToReadNow);
+			
+			socket->write(buff, iBytesToReadNow);
+
+			iBytesToRead -= isFile.gcount();
+
+			cout << "\rProgress: " << (iFileSize - iBytesToRead)/1000 << "/" << iFileSize/1000 << " KB";
+		}
+		cout << endl;
+		
+		isFile.close();
+
 	}
 
 	CommandHandler* GetCommandHandler::clone()

@@ -71,6 +71,7 @@
 				len += n;
 				if (len >= maxlen) break;
 			}
+			buf[len] = 0;
 			return len;
 		}
 

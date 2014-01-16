@@ -53,7 +53,14 @@ namespace fwsync
 
 				if (pCommand != NULL)
 				{
-					pCommand->process(socket, params);
+					try
+					{
+						pCommand->process(socket, params);
+					}
+					catch (const char* ex)
+					{
+						socket->writeline(ex);
+					}
 				}
 				else
 					socket->writeline("Unknown command\n");

@@ -14,9 +14,9 @@ namespace fwsync
 
 	static const char* OSRUNNING =
 #if defined(__APPLE__) || defined(__linux__)
-		"UNIX";
+		"GNU/Linux";
 #else
-		"Windows";
+		"Win32";
 #endif
 
 	static const int BUFFERSIZE = 1024;
