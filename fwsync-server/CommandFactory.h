@@ -9,14 +9,14 @@ namespace fwsync
 	class CommandFactory
 	{
 	public:
-		static CommandHandler* create(std::string);
+		static CommandHandler* create(string);
 
 	private:
-		typedef std::map<std::string, CommandHandler*> CommandHandlerMap;
+		typedef std::map<string, CommandHandler*> CommandHandlerMap;
 
 		static CommandHandlerMap& getMap();
 
-		static void assign(std::string, CommandHandler*);
+		static void assign(string, CommandHandler*);
 		friend class CommandHandler;
 	};
 }

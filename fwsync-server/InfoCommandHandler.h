@@ -5,6 +5,8 @@
 #include "socket.h"
 #include "time.h"
 
+using namespace std;
+
 namespace fwsync
 {
 
@@ -12,10 +14,10 @@ namespace fwsync
 	{
 	private:
 		InfoCommandHandler();
-		InfoCommandHandler(std::string);
+		InfoCommandHandler(string);
 
 	public:
-		virtual void process(Socket*, std::vector<std::string>&);
+		virtual void process(Socket*, vector<string>&);
 		virtual CommandHandler* clone();
 
 	private:

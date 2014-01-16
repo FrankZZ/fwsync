@@ -1,6 +1,8 @@
 #include "CommandHandler.h"
 #include "CommandFactory.h"
 
+using namespace std;
+
 namespace fwsync
 {
 
@@ -9,7 +11,7 @@ namespace fwsync
 
 	}
 
-	CommandHandler::CommandHandler(std::string sCommand)
+	CommandHandler::CommandHandler(string sCommand)
 	{
 		CommandFactory::assign(sCommand, this);
 	}

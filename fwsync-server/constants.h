@@ -19,6 +19,6 @@ namespace fwsync
 		"Win32";
 #endif
 
-	static const int BUFFERSIZE = 1024;
+	static const int BUFFERSIZE = 4096;
 
 }

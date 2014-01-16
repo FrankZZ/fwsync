@@ -7,6 +7,8 @@
 
 //#include <stdlib.h>
 
+using namespace std;
+
 namespace fwsync
 {
 
@@ -14,10 +16,10 @@ namespace fwsync
 	{
 		private:
 			GetCommandHandler();
-			GetCommandHandler(std::string);
+			GetCommandHandler(string);
 
 		public:
-			virtual void process(Socket* socket, std::vector<std::string>& params);
+			virtual void process(Socket* socket, vector<string>& params);
 			virtual CommandHandler* clone();
 
 		private:

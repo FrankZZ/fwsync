@@ -9,8 +9,8 @@ namespace fwsync
 	{
 	public:
 		CommandHandler();
-		CommandHandler(std::string);
-		virtual void process(Socket*, std::vector<std::string>&) = 0;
+		CommandHandler(string);
+		virtual void process(Socket*, vector<string>&) = 0;
 		virtual CommandHandler* clone() = 0;
 	};
 }

@@ -8,6 +8,7 @@
 
 
 #include "Socket.h"
+#include "SocketException.h"
 
 #if defined(__APPLE__) || defined(__linux__)
 
@@ -94,7 +95,11 @@
 			size_t len = 0;
 			while (size_t n = ::recv(sok, &c, 1, 0))
 			{
-				if (n == 0 || n == SOCKET_ERROR) break;
+				if (n == 0) break;
+				if (n == SOCKET_ERROR)
+				{
+					throw(SocketException());
+				}
 				if (c == '\n') break;
 				if (c != '\r') buf[len++] = c;
 				if (len >= maxlen) break;
@@ -114,7 +119,8 @@
 			size_t len = 0;
 			while (size_t n = ::recv(sok, (char*)&c, 2, 0))
 			{
-				if (n == 0 || n == SOCKET_ERROR) break;
+				if (n == 0) break;
+				if (n == SOCKET_ERROR) throw(SocketException());
 				if (c == '\n') break;
 				if (c != '\r') buf[len++] = c;
 				if (len >= maxlen) break;
@@ -130,7 +136,8 @@
 			// write a buffer
 			//=============================================================================
 		{
-			::send(sok, buf, (int)len, 0);
+			if (::send(sok, buf, (int)len, 0) == SOCKET_ERROR)
+				throw(SocketException());
 		}
 
 		//=============================================================================
@@ -139,7 +146,8 @@
 			// write a zero delimited string 
 			//=============================================================================
 		{
-			::send(sok, buf, (int)strlen(buf), 0);
+			if (::send(sok, buf, (int)strlen(buf), 0) == SOCKET_ERROR)
+				throw(SocketException());
 		}
 
 		//=============================================================================
@@ -148,7 +156,8 @@
 			// write a zero delimited string 
 			//=============================================================================
 		{
-			::send(sok, (const char*)buf, (int)(sizeof(wchar_t)*wcslen(buf)), 0);
+			if (::send(sok, (const char*)buf, (int)(sizeof(wchar_t)*wcslen(buf)), 0) == SOCKET_ERROR)
+				throw(SocketException());
 		}
 
 		//=============================================================================
@@ -157,8 +166,11 @@
 			// write a zero delimited string 
 			//=============================================================================
 		{
-			::send(sok, (const char*)buf, (int)(sizeof(char)*strlen(buf)), 0);
-			::send(sok, (const char*)"\n", (int)(sizeof(char)* 1), 0);
+			if (::send(sok, (const char*)buf, (int)(sizeof(char)*strlen(buf)), 0) == SOCKET_ERROR)
+				throw(SocketException());
+
+			if (::send(sok, (const char*)"\n", (int)(sizeof(char)* 1), 0) == SOCKET_ERROR)
+				throw(SocketException());
 		}
 
 		//=============================================================================
@@ -167,8 +179,11 @@
 			// write a zero delimited string 
 			//=============================================================================
 		{
-			::send(sok, (const char*)buf, (int)(sizeof(wchar_t)*wcslen(buf)), 0);
-			::send(sok, (const char*)L"\n", (int)(sizeof(wchar_t)* 1), 0);
+			if (::send(sok, (const char*)buf, (int)(sizeof(wchar_t)*wcslen(buf)), 0) == SOCKET_ERROR)
+				throw(SocketException());
+
+			if (::send(sok, (const char*)L"\n", (int)(sizeof(wchar_t)* 1), 0) == SOCKET_ERROR)
+				throw(SocketException());
 		}
 
 		//=============================================================================

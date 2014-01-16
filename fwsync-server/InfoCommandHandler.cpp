@@ -1,11 +1,13 @@
 #include "InfoCommandHandler.h"
 
+using namespace std;
+
 namespace fwsync
 {
 
-	InfoCommandHandler InfoCommandHandler::m_infoCmdHandler(std::string("info"));
+	InfoCommandHandler InfoCommandHandler::m_infoCmdHandler(string("info"));
 
-	InfoCommandHandler::InfoCommandHandler(std::string sCommand) : CommandHandler(sCommand)
+	InfoCommandHandler::InfoCommandHandler(string sCommand) : CommandHandler(sCommand)
 	{
 
 	}
@@ -15,7 +17,7 @@ namespace fwsync
 
 	}
 
-	void InfoCommandHandler::process(Socket* socket, std::vector<std::string>& params)
+	void InfoCommandHandler::process(Socket* socket, vector<string>& params)
 	{
 		time_t     now = time(0);
 		struct tm  tstruct;

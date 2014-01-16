@@ -29,45 +29,60 @@ namespace fwsync
 
 		// say hello to client
 		socket->write("FWSync server running on ");
-		socket->write(OSRUNNING);
-		socket->writeline("\n");
+		socket->writeline(OSRUNNING);
+		socket->writeline("");
 
 
 		// read first line of request
-		while (socket->readline(line, MAXPATH) > 0)
+		try
 		{
-			vector<string> params = *new vector<string>();
-			cout << line << "\n";
-
-			strsplit(line, params);
-
-			if (params.size() > 0)
+			while (socket->readline(line, MAXPATH) > 0)
 			{
-				for (int i = 0; i < params[0].length(); i++)
-					params[0][i] = tolower(params[0][i]);
+				vector<string> params = *new vector<string>();
 
-				// echo request to terminal
-				cout << "Got request: " << params[0] << "\n";
+				cout << line << "\n";
 
-				CommandHandler* pCommand = CommandFactory::create(params[0]);
+				strsplit(line, params);
 
-				if (pCommand != NULL)
+				if (params.size() > 0)
 				{
-					try
+					for (int i = 0; i < params[0].length(); i++)
+						params[0][i] = tolower(params[0][i]);
+
+					// echo request to terminal
+					cout << "Got request: " << params[0].c_str() << "\n";
+
+					CommandHandler* pCommand = CommandFactory::create(params[0]);
+
+					if (pCommand != NULL)
 					{
-						pCommand->process(socket, params);
+						try
+						{
+							pCommand->process(socket, params);
+						}
+						catch (const char* ex)
+						{
+							socket->writeline(ex);
+							socket->writeline("");
+						}
+						catch (SocketException& ex)
+						{
+							cout << endl << "Socket error occured" << endl;
+							socket->close();
+						}
 					}
-					catch (const char* ex)
-					{
-						socket->writeline(ex);
-					}
+					else
+						socket->writeline("Unknown command\n");
+
+					delete pCommand;
 				}
 				else
-					socket->writeline("Unknown command\n");
+					socket->writeline("Syntax error\n");
 			}
-			else
-				socket->writeline("Syntax error\n");
+		}
+		catch (SocketException& ex)
+		{
+			cout << "Socket exception occured" << endl;
 		}
 	}
-
 }

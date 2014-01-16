@@ -4,23 +4,24 @@
 #include <vector>
 #include "socket.h"
 #include "time.h"
+#include "Directory.h"
 
 using namespace std;
 
 namespace fwsync
 {
 
-	class QuitCommandHandler : public CommandHandler
+	class DirCommandHandler : public CommandHandler
 	{
 	private:
-		QuitCommandHandler();
-		QuitCommandHandler(string);
+		DirCommandHandler();
+		DirCommandHandler(string);
 
 	public:
 		virtual void process(Socket*, vector<string>&);
 		virtual CommandHandler* clone();
 
 	private:
-		static QuitCommandHandler m_quitCmdHandler;
+		static DirCommandHandler m_dirCmdHandler;
 	};
 }
