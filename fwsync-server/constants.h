@@ -23,4 +23,6 @@ namespace fwsync
 
 	static const int BUFFERSIZE = 4096;
 
+	static const wchar_t DELIMITER = '|';
+
 }

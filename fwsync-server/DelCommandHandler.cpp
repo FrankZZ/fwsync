@@ -19,10 +19,10 @@ namespace fwsync
 
 	void DelCommandHandler::process(Socket* socket, vector<wstring>& params)
 	{
-		wcout << "Writing dirlisting\n";
-		socket->writeline(Directory::getListing(params[1]).c_str());
-		wcout << "Wrote dirlisting\n";
-		socket->writeline(L"");
+		if (_wremove(params[1].c_str()) != 0)
+			throw(L"Cannot delete file");
+		else
+			socket->writeline("File deleted.\n");
 	}
 
 	CommandHandler* DelCommandHandler::clone()

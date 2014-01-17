@@ -19,14 +19,17 @@ namespace fwsync
 
 	void GetCommandHandler::process(Socket* socket, vector<wstring>& params)
 	{
-		if (params.size() != 2)
+		if (params.size() < 2)
+		{
+			socket->writeline("-1");
 			throw(L"Syntax error");
-
+		}
+		
 		ifstream isFile(params[1], ifstream::binary);
 
 		if (!isFile.is_open())
 		{
-			socket->writeline(L"-1");
+			socket->writeline("-1");
 			throw(L"cannot open file");
 		}
 

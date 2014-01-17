@@ -1,4 +1,3 @@
-
 #include "fwsync-server.h"
 
 namespace fwsync
@@ -42,7 +41,7 @@ namespace fwsync
 
 				wcout << line << "\n";
 
-				wstrsplit(line, params);
+				wstrsplit(line, params, L' ');
 
 				if (params.size() > 0)
 				{
