@@ -14,10 +14,10 @@ namespace fwsync
 	{
 	private:
 		QuitCommandHandler();
-		QuitCommandHandler(string);
+		QuitCommandHandler(wstring);
 
 	public:
-		virtual void process(Socket*, vector<string>&);
+		virtual void process(Socket*, vector<wstring>&);
 		virtual CommandHandler* clone();
 
 	private:

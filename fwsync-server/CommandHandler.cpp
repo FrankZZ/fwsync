@@ -11,7 +11,7 @@ namespace fwsync
 
 	}
 
-	CommandHandler::CommandHandler(string sCommand)
+	CommandHandler::CommandHandler(wstring sCommand)
 	{
 		CommandFactory::assign(sCommand, this);
 	}

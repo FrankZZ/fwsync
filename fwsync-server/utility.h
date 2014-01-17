@@ -8,5 +8,5 @@ using namespace std;
 
 namespace fwsync
 {
-	void strsplit(string str, vector<string> &tokens);
+	void wstrsplit(wstring str, vector<wstring> &tokens);
 }

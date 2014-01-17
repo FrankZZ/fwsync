@@ -5,9 +5,9 @@ using namespace std;
 namespace fwsync
 {
 
-	DirCommandHandler DirCommandHandler::m_dirCmdHandler(string("dir"));
+	DirCommandHandler DirCommandHandler::m_dirCmdHandler(wstring(L"dir"));
 
-	DirCommandHandler::DirCommandHandler(std::string sCommand) : CommandHandler(sCommand)
+	DirCommandHandler::DirCommandHandler(wstring sCommand) : CommandHandler(sCommand)
 	{
 
 	}
@@ -17,12 +17,17 @@ namespace fwsync
 
 	}
 
-	void DirCommandHandler::process(Socket* socket, vector<string>& params)
+	void DirCommandHandler::process(Socket* socket, vector<wstring>& params)
 	{
-		cout << "Writing dirlisting\n";
+		if (params.size() != 2)
+		{
+			throw (L"Syntax error");
+		}
+
+		wcout << "Writing dirlisting\n";
 		socket->writeline(Directory::getListing(params[1]).c_str());
-		cout << "Wrote dirlisting\n";
-		socket->writeline("");
+		wcout << "Wrote dirlisting\n";
+		socket->writeline(L"");
 	}
 
 	CommandHandler* DirCommandHandler::clone()

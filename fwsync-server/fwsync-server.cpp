@@ -7,11 +7,11 @@ namespace fwsync
 	{
 		ServerSocket serverSocket(iPort);
 		
-		cout << "FWSync Server listening...\r\n";
+		wcout << "FWSync Server listening...\r\n";
 		
 		while (Socket* socket = serverSocket.accept())
 		{
-			cout << "Incoming Client\r\n";
+			wcout << "Incoming Client\r\n";
 
 			this->handle(socket);
 
@@ -23,14 +23,14 @@ namespace fwsync
 
 	void Server::handle(Socket *socket)
 	{
-		char line[MAXPATH + 1];
+		wchar_t line[MAXPATH + 1];
 
-		cout << "Connected!\r\n";
+		wcout << "Connected!\r\n";
 
 		// say hello to client
-		socket->write("FWSync server running on ");
+		socket->write(L"FWSync server running on ");
 		socket->writeline(OSRUNNING);
-		socket->writeline("");
+		socket->write(L"\n");
 
 
 		// read first line of request
@@ -38,11 +38,11 @@ namespace fwsync
 		{
 			while (socket->readline(line, MAXPATH) > 0)
 			{
-				vector<string> params = *new vector<string>();
+				vector<wstring> params = *new vector<wstring>();
 
-				cout << line << "\n";
+				wcout << line << "\n";
 
-				strsplit(line, params);
+				wstrsplit(line, params);
 
 				if (params.size() > 0)
 				{
@@ -50,7 +50,7 @@ namespace fwsync
 						params[0][i] = tolower(params[0][i]);
 
 					// echo request to terminal
-					cout << "Got request: " << params[0].c_str() << "\n";
+					wcout << "Got request: " << params[0].c_str() << endl;
 
 					CommandHandler* pCommand = CommandFactory::create(params[0]);
 
@@ -60,24 +60,24 @@ namespace fwsync
 						{
 							pCommand->process(socket, params);
 						}
-						catch (const char* ex)
+						catch (const wchar_t* ex)
 						{
 							socket->writeline(ex);
-							socket->writeline("");
+							socket->writeline(L"");
 						}
 						catch (SocketException& ex)
 						{
-							cout << endl << "Socket error occured" << endl;
+							wcout << endl << "Socket error occured" << endl;
 							socket->close();
 						}
 					}
 					else
-						socket->writeline("Unknown command\n");
+						socket->writeline(L"Unknown command\n");
 
 					delete pCommand;
 				}
 				else
-					socket->writeline("Syntax error\n");
+					socket->writeline(L"Syntax error\n");
 			}
 		}
 		catch (SocketException& ex)

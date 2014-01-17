@@ -1,19 +1,20 @@
 #include "Directory.h"
+
 using namespace std;
 
 namespace fwsync
 {
-	void Directory::del(std::string)
+	void Directory::del(wstring)
 	{
 		
 	}
 
-	DIR* Directory::open(string szPath)
+	WDIR* Directory::open(wstring szPath)
 	{
-		DIR* pDir = NULL;
-		struct dirent* pEnt = NULL;
+		WDIR* pDir = NULL;
+		struct wdirent* pEnt = NULL;
 
-		pDir = opendir(szPath.c_str());
+		pDir = wopendir(szPath.c_str());
 
 		if (pDir == NULL)
 		{
@@ -23,13 +24,13 @@ namespace fwsync
 		return pDir;
 	}
 
-	string Directory::getListing(string szPath)
+	wstring Directory::getListing(wstring szPath)
 	{
-		string szListing;
+		wstring szListing;
 
-		DIR* pDir = Directory::open(szPath);
+		WDIR* pDir = Directory::open(szPath);
 		
-		struct dirent* pEnt = NULL;
+		struct wdirent* pEnt = NULL;
 
 		if (pDir == NULL)
 		{
@@ -39,10 +40,10 @@ namespace fwsync
 		}
 
 		int count = 0;
-		while (pEnt = readdir(pDir))
+		while (pEnt = wreaddir(pDir))
 		{
 			if (count > 0)
-				szListing.append("\n");
+				szListing.append(L"\n");
 
 			szListing.append(pEnt->d_name);
 

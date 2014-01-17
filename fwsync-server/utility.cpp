@@ -4,10 +4,10 @@ using namespace std;
 
 namespace fwsync
 {
-	void strsplit(string str, vector<string> &tokens)
+	void wstrsplit(wstring str, vector<wstring> &tokens)
 	{
-		string buf;
-		stringstream ss(str); // Insert the string into a stream
+		wstring buf;
+		wstringstream ss(str); // Insert the string into a stream
 
 		while (ss >> buf)
 			tokens.push_back(buf);

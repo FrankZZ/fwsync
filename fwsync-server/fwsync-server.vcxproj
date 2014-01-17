@@ -82,6 +82,7 @@
     <ClInclude Include="CommandFactory.h" />
     <ClInclude Include="CommandHandler.h" />
     <ClInclude Include="constants.h" />
+    <ClInclude Include="DelCommandHandler.h" />
     <ClInclude Include="DirCommandHandler.h" />
     <ClInclude Include="Directory.h" />
     <ClInclude Include="dirent.h" />
@@ -92,12 +93,14 @@
     <ClInclude Include="Socket.h" />
     <ClInclude Include="SocketException.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="SyncCommandHandler.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="utility.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CommandFactory.cpp" />
     <ClCompile Include="CommandHandler.cpp" />
+    <ClCompile Include="DelCommandHandler.cpp" />
     <ClCompile Include="DirCommandHandler.cpp" />
     <ClCompile Include="Directory.cpp" />
     <ClCompile Include="GetCommandHandler.cpp" />
@@ -110,6 +113,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="SyncCommandHandler.cpp" />
     <ClCompile Include="utility.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

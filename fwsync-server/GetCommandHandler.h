@@ -16,10 +16,10 @@ namespace fwsync
 	{
 		private:
 			GetCommandHandler();
-			GetCommandHandler(string);
+			GetCommandHandler(wstring);
 
 		public:
-			virtual void process(Socket* socket, vector<string>& params);
+			virtual void process(Socket* socket, vector<wstring>& params);
 			virtual CommandHandler* clone();
 
 		private:

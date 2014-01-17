@@ -35,6 +35,12 @@
     <ClCompile Include="DirCommandHandler.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
+    <ClCompile Include="SyncCommandHandler.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="DelCommandHandler.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="fwsync-server.h">
@@ -81,6 +87,12 @@
     </ClInclude>
     <ClInclude Include="SocketException.h">
       <Filter>Header Files\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="SyncCommandHandler.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="DelCommandHandler.h">
+      <Filter>Header Files\Commands</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -10,17 +10,17 @@ using namespace std;
 namespace fwsync
 {
 
-	class InfoCommandHandler : public CommandHandler
+	class SyncCommandHandler : public CommandHandler
 	{
 	private:
-		InfoCommandHandler();
-		InfoCommandHandler(wstring);
+		SyncCommandHandler();
+		SyncCommandHandler(wstring);
 
 	public:
 		virtual void process(Socket*, vector<wstring>&);
 		virtual CommandHandler* clone();
 
 	private:
-		static InfoCommandHandler m_infoCmdHandler;
+		static SyncCommandHandler m_syncCmdHandler;
 	};
 }

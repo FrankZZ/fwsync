@@ -5,7 +5,7 @@ using namespace std;
 namespace fwsync
 {
 
-	void CommandFactory::assign(string szCommand, CommandHandler* pCmdHandler)
+	void CommandFactory::assign(wstring szCommand, CommandHandler* pCmdHandler)
 	{
 		CommandHandlerMap& cmdHandlers = getMap();
 		CommandHandlerMap::const_iterator ciFind = cmdHandlers.find(szCommand);
@@ -16,7 +16,7 @@ namespace fwsync
 		}
 	}
 
-	CommandHandler* CommandFactory::create(string szCommand)
+	CommandHandler* CommandFactory::create(wstring szCommand)
 	{
 		CommandHandlerMap& cmdHandlers = getMap();
 

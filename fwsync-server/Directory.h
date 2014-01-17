@@ -9,11 +9,11 @@ namespace fwsync
 	class Directory
 	{
 		public:
-			static void del(string);
-			static void create(string);
-			static string getListing(string);
+			static void del(wstring);
+			static void create(wstring);
+			static wstring getListing(wstring);
 	
 		private:
-			static DIR* open(string);
+			static WDIR* open(wstring);
 	};
 }

@@ -1,22 +1,24 @@
 #pragma once
 #include <string>
 
+using namespace std;
+
 namespace fwsync
 {
 	static const int MAXPATH = 256; // Maximale lengte van padnaam
 	
-	static const std::string PATHSEPERATOR =
+	static const wstring PATHSEPERATOR =
 #if defined(__APPLE__) || defined(__linux__)
-		"/";
+		L"/";
 #else
-		"\\";
+		L"\\";
 #endif
 
-	static const char* OSRUNNING =
+	static const wchar_t* OSRUNNING =
 #if defined(__APPLE__) || defined(__linux__)
-		"GNU/Linux";
+		L"GNU/Linux";
 #else
-		"Win32";
+		L"Win32";
 #endif
 
 	static const int BUFFERSIZE = 4096;

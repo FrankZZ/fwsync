@@ -5,9 +5,9 @@ using namespace std;
 namespace fwsync
 {
 
-	GetCommandHandler GetCommandHandler::m_getCmdHandler(string("get"));
+	GetCommandHandler GetCommandHandler::m_getCmdHandler(wstring(L"get"));
 
-	GetCommandHandler::GetCommandHandler(string sCommand) : CommandHandler(sCommand)
+	GetCommandHandler::GetCommandHandler(wstring sCommand) : CommandHandler(sCommand)
 	{
 
 	}
@@ -17,14 +17,17 @@ namespace fwsync
 
 	}
 
-	void GetCommandHandler::process(Socket* socket, vector<string>& params)
+	void GetCommandHandler::process(Socket* socket, vector<wstring>& params)
 	{
+		if (params.size() != 2)
+			throw(L"Syntax error");
+
 		ifstream isFile(params[1], ifstream::binary);
 
 		if (!isFile.is_open())
 		{
-			socket->writeline("-1");
-			throw("cannot open file");
+			socket->writeline(L"-1");
+			throw(L"cannot open file");
 		}
 
 		char buff[BUFFERSIZE];
@@ -50,9 +53,9 @@ namespace fwsync
 
 			iBytesToRead -= isFile.gcount();
 
-			cout << "\rProgress: " << (((long long)(iFileSize - iBytesToRead) * 100) / iFileSize) << "% " << (iFileSize - iBytesToRead) / 1000 << "/" << iFileSize / 1000 << " KB";
+			wcout << "\rProgress: " << (((long long)(iFileSize - iBytesToRead) * 100) / iFileSize) << "% " << (iFileSize - iBytesToRead) / 1000 << "/" << iFileSize / 1000 << " KB";
 		}
-		cout << endl;
+		wcout << endl;
 		
 		isFile.close();
 
