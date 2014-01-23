@@ -86,6 +86,8 @@
     <ClInclude Include="DirCommandHandler.h" />
     <ClInclude Include="Directory.h" />
     <ClInclude Include="dirent.h" />
+    <ClInclude Include="FileReader.h" />
+    <ClInclude Include="FileWriter.h" />
     <ClInclude Include="fwsync-server.h" />
     <ClInclude Include="GetCommandHandler.h" />
     <ClInclude Include="InfoCommandHandler.h" />
@@ -103,6 +105,8 @@
     <ClCompile Include="DelCommandHandler.cpp" />
     <ClCompile Include="DirCommandHandler.cpp" />
     <ClCompile Include="Directory.cpp" />
+    <ClCompile Include="FileReader.cpp" />
+    <ClCompile Include="FileWriter.cpp" />
     <ClCompile Include="GetCommandHandler.cpp" />
     <ClCompile Include="fwsync-server.cpp" />
     <ClCompile Include="InfoCommandHandler.cpp" />
