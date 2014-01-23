@@ -5,9 +5,9 @@ using namespace std;
 namespace fwsync
 {
 
-	DelCommandHandler DelCommandHandler::m_delCmdHandler(wstring(L"del"));
+	DelCommandHandler DelCommandHandler::m_delCmdHandler(string("del"));
 
-	DelCommandHandler::DelCommandHandler(wstring sCommand) : CommandHandler(sCommand)
+	DelCommandHandler::DelCommandHandler(string sCommand) : CommandHandler(sCommand)
 	{
 
 	}
@@ -17,10 +17,10 @@ namespace fwsync
 
 	}
 
-	void DelCommandHandler::process(Socket* socket, vector<wstring>& params)
+	void DelCommandHandler::process(Socket* socket, vector<string>& params)
 	{
-		if (_wremove(params[1].c_str()) != 0)
-			throw(L"Cannot delete file");
+		if (remove(params[1].c_str()) != 0)
+			throw("Cannot delete file");
 		else
 			socket->writeline("File deleted.\n");
 	}

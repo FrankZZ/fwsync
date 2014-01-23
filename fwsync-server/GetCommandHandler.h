@@ -4,6 +4,8 @@
 #include <iostream>
 #include <fstream>
 #include "constants.h"
+#include "FileReader.h"
+
 
 //#include <stdlib.h>
 
@@ -16,10 +18,10 @@ namespace fwsync
 	{
 		private:
 			GetCommandHandler();
-			GetCommandHandler(wstring);
+			GetCommandHandler(string);
 
 		public:
-			virtual void process(Socket* socket, vector<wstring>& params);
+			virtual void process(Socket* socket, vector<string>& params);
 			virtual CommandHandler* clone();
 
 		private:

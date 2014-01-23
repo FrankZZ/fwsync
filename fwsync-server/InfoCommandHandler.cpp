@@ -5,9 +5,9 @@ using namespace std;
 namespace fwsync
 {
 
-	InfoCommandHandler InfoCommandHandler::m_infoCmdHandler(wstring(L"info"));
+	InfoCommandHandler InfoCommandHandler::m_infoCmdHandler(string("info"));
 
-	InfoCommandHandler::InfoCommandHandler(wstring sCommand) : CommandHandler(sCommand)
+	InfoCommandHandler::InfoCommandHandler(string sCommand) : CommandHandler(sCommand)
 	{
 
 	}
@@ -17,10 +17,10 @@ namespace fwsync
 
 	}
 
-	void InfoCommandHandler::process(Socket* socket, vector<wstring>& params)
+	void InfoCommandHandler::process(Socket* socket, vector<string>& params)
 	{
-		socket->writeline(L"FWSync Server 0.1a");
-		socket->writeline(L"");
+		socket->writeline("FWSync Server 0.1a");
+		socket->writeline("");
 	}
 
 	CommandHandler* InfoCommandHandler::clone()

@@ -7,18 +7,18 @@ namespace fwsync
 {
 	static const int MAXPATH = 256; // Maximale lengte van padnaam
 	
-	static const wstring PATHSEPERATOR =
+	static const string PATHSEPERATOR =
 #if defined(__APPLE__) || defined(__linux__)
-		L"/";
+		"/";
 #else
-		L"\\";
+		"\\";
 #endif
 
-	static const wchar_t* OSRUNNING =
+	static const char* OSRUNNING =
 #if defined(__APPLE__) || defined(__linux__)
-		L"GNU/Linux";
+		"GNU/Linux";
 #else
-		L"Win32";
+		"Win32";
 #endif
 
 	static const int BUFFERSIZE = 4096;
