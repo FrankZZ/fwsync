@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{7e5d08c5-1086-4036-b82c-d53ba94436e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1f66fb72-5aa1-43aa-a777-d218e19a4a59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Commands">
+      <UniqueIdentifier>{55b10736-80eb-41ff-a4ae-1c76fffff9b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Commands">
+      <UniqueIdentifier>{bba2a3fd-6eec-4180-8f47-d1a7fb771535}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models">
+      <UniqueIdentifier>{421ca98a-e131-4e09-b98f-b371c1c66cc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models">
+      <UniqueIdentifier>{6db93182-7393-4b95-964a-5926b4469298}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Exceptions">
+      <UniqueIdentifier>{bdb176d0-673b-44e6-b41a-a56966856e30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Commands\Shared">
+      <UniqueIdentifier>{e2274890-b026-4d10-92bd-7702ceea857f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Models\Shared">
+      <UniqueIdentifier>{e3103b5d-6e62-4fd0-97bb-72915b0992cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Commands\Shared">
+      <UniqueIdentifier>{2a74a2bc-ebd4-4839-b007-bf70ce2b7015}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Models\Shared">
+      <UniqueIdentifier>{97e41666-22f9-4f23-a436-b606d839ef50}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Commands\DelCommandHandler.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands\DirCommandHandler.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands\GetCommandHandler.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands\InfoCommandHandler.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands\QuitCommandHandler.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands\SyncCommandHandler.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="fwsync-server.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\utility.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\Commands\CommandHandler.cpp">
+      <Filter>Source Files\Commands\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\Models\CommandFactory.cpp">
+      <Filter>Source Files\Models\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\Models\Directory.cpp">
+      <Filter>Source Files\Models\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\Models\FileReader.cpp">
+      <Filter>Source Files\Models\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\Models\FileWriter.cpp">
+      <Filter>Source Files\Models\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Shared\Models\Socket.cpp">
+      <Filter>Source Files\Models\Shared</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Commands\DelCommandHandler.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands\DirCommandHandler.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands\GetCommandHandler.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands\InfoCommandHandler.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands\QuitCommandHandler.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands\SyncCommandHandler.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="fwsync-server.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\constants.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\utility.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Commands\CommandHandler.h">
+      <Filter>Header Files\Commands\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Models\CommandFactory.h">
+      <Filter>Header Files\Models\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Models\Directory.h">
+      <Filter>Header Files\Models\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Models\FileReader.h">
+      <Filter>Header Files\Models\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Models\FileWriter.h">
+      <Filter>Header Files\Models\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Models\Socket.h">
+      <Filter>Header Files\Models\Shared</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Shared\Models\SocketException.h">
+      <Filter>Header Files\Models\Shared</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
