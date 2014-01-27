@@ -78,6 +78,12 @@
     <ClInclude Include="..\Shared\Commands\CommandHandler.h">
       <Filter>Header Files\Commands\Shared</Filter>
     </ClInclude>
+    <ClInclude Include="Commands\PutCommandHandler.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Commands\DirCommandHandler.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Commands\DefaultCommandHandler.cpp">
@@ -116,6 +122,12 @@
     </ClCompile>
     <ClCompile Include="..\Shared\Commands\CommandHandler.cpp">
       <Filter>Source Files\Commands\Shared</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands\PutCommandHandler.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands\DirCommandHandler.cpp">
+      <Filter>Source Files\Commands</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

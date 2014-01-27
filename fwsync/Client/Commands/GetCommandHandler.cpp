@@ -31,11 +31,6 @@ namespace fwsync
 
 	}
 
-	void interrupt(int param)
-	{
-		remove("test.exe");
-	}
-
 	CommandHandler* GetCommandHandler::clone()
 	{
 		return new GetCommandHandler();

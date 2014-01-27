@@ -22,7 +22,9 @@
     <ClCompile Include="Commands\DirCommandHandler.cpp" />
     <ClCompile Include="Commands\GetCommandHandler.cpp" />
     <ClCompile Include="Commands\InfoCommandHandler.cpp" />
+    <ClCompile Include="Commands\PutCommandHandler.cpp" />
     <ClCompile Include="Commands\QuitCommandHandler.cpp" />
+    <ClCompile Include="Commands\RenCommandHandler.cpp" />
     <ClCompile Include="Commands\SyncCommandHandler.cpp" />
     <ClCompile Include="fwsync-server.cpp" />
     <ClCompile Include="main.cpp" />
@@ -41,7 +43,9 @@
     <ClInclude Include="Commands\DirCommandHandler.h" />
     <ClInclude Include="Commands\GetCommandHandler.h" />
     <ClInclude Include="Commands\InfoCommandHandler.h" />
+    <ClInclude Include="Commands\PutCommandHandler.h" />
     <ClInclude Include="Commands\QuitCommandHandler.h" />
+    <ClInclude Include="Commands\RenCommandHandler.h" />
     <ClInclude Include="Commands\SyncCommandHandler.h" />
     <ClInclude Include="fwsync-server.h" />
   </ItemGroup>

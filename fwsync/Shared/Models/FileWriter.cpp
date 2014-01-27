@@ -7,6 +7,8 @@ namespace fwsync
 	FileWriter::FileWriter(string szPath)
 		: m_szPath(szPath)
 	{
+		Directory::createSubDirectories(szPath, true);
+
 		m_osFile = ofstream(szPath, ofstream::binary | ofstream::trunc);
 		
 		if (m_osFile.bad())

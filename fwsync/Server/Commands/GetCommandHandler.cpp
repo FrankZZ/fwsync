@@ -25,11 +25,11 @@ namespace fwsync
 			throw("Syntax error");
 		}
 		FileReader* fr = new FileReader(params[1]);
-		
+
 		fr->writeToSocket(socket);
 
 		cout << endl;
-		
+
 		delete fr;
 	}
 

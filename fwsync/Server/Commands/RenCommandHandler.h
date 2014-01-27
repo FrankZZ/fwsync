@@ -14,17 +14,17 @@ using namespace std;
 namespace fwsync
 {
 
-	class GetCommandHandler : public CommandHandler
+	class RenCommandHandler : public CommandHandler
 	{
 	private:
-		GetCommandHandler();
-		GetCommandHandler(string);
+		RenCommandHandler();
+		RenCommandHandler(string);
 
 	public:
 		virtual void process(Socket* socket, vector<string>& params);
 		virtual CommandHandler* clone();
 
 	private:
-		static GetCommandHandler m_getCmdHandler;
+		static RenCommandHandler m_renCmdHandler;
 	};
 }

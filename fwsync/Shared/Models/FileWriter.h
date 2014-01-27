@@ -4,6 +4,7 @@
 #include <fstream>
 #include "Socket.h"
 #include "../../Shared/constants.h"
+#include "../../Shared/Models/Directory.h"
 #include "SocketException.h"
 
 using namespace std;

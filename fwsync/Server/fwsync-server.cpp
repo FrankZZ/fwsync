@@ -37,7 +37,7 @@ namespace fwsync
 		{
 			while (socket->readline(line, MAXPATH) > 0)
 			{
-				vector<string> params = *new vector<string>();
+				vector<string> params = vector<string>();
 
 				cout << line << "\n";
 

@@ -22,7 +22,9 @@
     <ClInclude Include="..\Shared\Models\SocketException.h" />
     <ClInclude Include="..\Shared\utility.h" />
     <ClInclude Include="Commands\DefaultCommandHandler.h" />
+    <ClInclude Include="Commands\DirCommandHandler.h" />
     <ClInclude Include="Commands\GetCommandHandler.h" />
+    <ClInclude Include="Commands\PutCommandHandler.h" />
     <ClInclude Include="Commands\QuitCommandHandler.h" />
     <ClInclude Include="Commands\SyncCommandHandler.h" />
     <ClInclude Include="fwsync-client.h" />
@@ -36,7 +38,9 @@
     <ClCompile Include="..\Shared\Models\Socket.cpp" />
     <ClCompile Include="..\Shared\utility.cpp" />
     <ClCompile Include="Commands\DefaultCommandHandler.cpp" />
+    <ClCompile Include="Commands\DirCommandHandler.cpp" />
     <ClCompile Include="Commands\GetCommandHandler.cpp" />
+    <ClCompile Include="Commands\PutCommandHandler.cpp" />
     <ClCompile Include="Commands\QuitCommandHandler.cpp" />
     <ClCompile Include="Commands\SyncCommandHandler.cpp" />
     <ClCompile Include="fwsync-client.cpp" />
