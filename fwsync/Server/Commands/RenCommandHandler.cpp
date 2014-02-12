@@ -17,8 +17,11 @@ namespace fwsync
 
 	}
 
-	void RenCommandHandler::process(Socket* socket, vector<string>& params)
+	void RenCommandHandler::process(Socket* socket, string szLine)
 	{
+		vector<string> params = vector<string>();
+		strsplit(szLine, params, ' ', 3);
+
 		if (params.size() < 3)
 		{
 			socket->writeline("-1");

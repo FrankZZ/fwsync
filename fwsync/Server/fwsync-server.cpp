@@ -22,7 +22,7 @@ namespace fwsync
 
 	void Server::handle(Socket *socket)
 	{
-		char line[MAXPATH + 1];
+		char szLine[MAXPATH + 1];
 
 		cout << "Connected!\r\n";
 
@@ -35,13 +35,13 @@ namespace fwsync
 		// read first line of request
 		try
 		{
-			while (socket->readline(line, MAXPATH) > 0)
+			while (socket->readline(szLine, MAXPATH) > 0)
 			{
 				vector<string> params = vector<string>();
 
-				cout << line << "\n";
+				cout << szLine << "\n";
 
-				strsplit(line, params, ' ');
+				strsplit(szLine, params, ' ', 2);
 
 				if (params.size() > 0)
 				{
@@ -57,10 +57,12 @@ namespace fwsync
 					{
 						try
 						{
-							pCommand->process(socket, params);
+							pCommand->process(socket, szLine);
 						}
 						catch (const char* ex)
 						{
+							cout << "ERROR " << ex;
+							socket->writeline("ERROR ");
 							socket->writeline(ex);
 							socket->writeline("");
 						}

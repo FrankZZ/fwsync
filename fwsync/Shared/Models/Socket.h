@@ -50,9 +50,11 @@ namespace fwsync
 		size_t readline(wchar_t *buf, size_t maxlen);
 
 		void write(const char *buf, size_t len);
+		void write(string buf);
 		void write(const char *buf);
 		void write(const wchar_t *buf);
 		void writeline(const wchar_t *buf);
+		void writeline(string buf);
 		void writeline(const char *buf);
 	};
 

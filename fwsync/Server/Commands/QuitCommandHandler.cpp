@@ -14,7 +14,7 @@ namespace fwsync
 
 	}
 
-	void QuitCommandHandler::process(Socket* socket, vector<string>& params)
+	void QuitCommandHandler::process(Socket* socket, string szLine)
 	{
 		socket->writeline("Bye.");
 		socket->close();

@@ -17,20 +17,28 @@ namespace fwsync
 
 	}
 
-	void GetCommandHandler::process(Socket* socket, vector<string>& params)
+	void GetCommandHandler::process(Socket* socket, string szLine)
 	{
-		if (params.size() < 2)
+		vector<string> params = vector<string>();
+		strsplit(szLine, params, ' ', 3);
+
+		if (params.size() < 3)
 		{
 			socket->writeline("-1");
 			throw("Syntax error");
 		}
+
 		FileReader* fr = new FileReader(params[1]);
+		
+		socket->writeline("OK");
 
 		fr->writeToSocket(socket);
 
 		cout << endl;
 
 		delete fr;
+
+		socket->writeline("");
 	}
 
 	CommandHandler* GetCommandHandler::clone()

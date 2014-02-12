@@ -25,6 +25,8 @@
 	#include <cstring>
 	#include <stdexcept>
 
+	#define SOCKET_ERROR (-1)
+
 #else // Windows
 
 	#pragma comment(lib, "wsock32.lib")  // Tell linker to use this library
@@ -69,6 +71,7 @@
 			while (size_t n = ::recv(sok, buf + len, int(maxlen - len), 0))
 			{
 				if (n == 0) break;
+				if (n == SOCKET_ERROR) throw(SocketException());
 				len += n;
 				if (len >= maxlen) break;
 			}
@@ -141,6 +144,15 @@
 		}
 
 		//=============================================================================
+		void Socket::write(string buf)
+			//=============================================================================
+			// write a zero delimited string 
+			//=============================================================================
+		{
+			write(buf.c_str());
+		}
+
+		//=============================================================================
 		void Socket::write(const char *buf)
 			//=============================================================================
 			// write a zero delimited string 
@@ -158,6 +170,17 @@
 		{
 			if (::send(sok, (const char*)buf, (int)(sizeof(wchar_t)*wcslen(buf)), 0) == SOCKET_ERROR)
 				throw(SocketException());
+		}
+
+		
+		//=============================================================================
+
+		void Socket::writeline(string buf)
+		{
+			//=============================================================================
+			// write a zero delimited string 
+			//=============================================================================
+			writeline(buf.c_str());
 		}
 
 		//=============================================================================
@@ -249,7 +272,10 @@
 
 			hostent *hp;
 			hp = ::gethostbyname(host);
-			::memcpy(&dest.sin_addr, hp->h_addr, hp->h_length);
+			if (hp != NULL)
+				::memcpy(&dest.sin_addr, hp->h_addr, hp->h_length);
+			else
+				throw runtime_error("cannot find address");
 
 			if (dest.sin_addr.s_addr == -1)
 				throw runtime_error("cannot find address");

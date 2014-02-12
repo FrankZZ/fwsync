@@ -21,7 +21,7 @@ namespace fwsync
 			
 
 		public:
-			virtual void process(Socket* socket, vector<string>& params);
+			virtual void process(Socket* socket, string szLine);
 			virtual CommandHandler* clone();
 
 		private:

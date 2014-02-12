@@ -59,7 +59,7 @@ int main()
 		}
 		catch (runtime_error& ex)
 		{
-			std::cout << "Cannot connect" << endl;
+			std::cout << ex.what() << endl;
 		}
 	}
 

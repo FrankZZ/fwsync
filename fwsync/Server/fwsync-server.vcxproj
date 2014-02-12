@@ -24,6 +24,7 @@
     <ClCompile Include="Commands\InfoCommandHandler.cpp" />
     <ClCompile Include="Commands\PutCommandHandler.cpp" />
     <ClCompile Include="Commands\QuitCommandHandler.cpp" />
+    <ClCompile Include="Commands\RdirCommandHandler.cpp" />
     <ClCompile Include="Commands\RenCommandHandler.cpp" />
     <ClCompile Include="Commands\SyncCommandHandler.cpp" />
     <ClCompile Include="fwsync-server.cpp" />
@@ -45,6 +46,7 @@
     <ClInclude Include="Commands\InfoCommandHandler.h" />
     <ClInclude Include="Commands\PutCommandHandler.h" />
     <ClInclude Include="Commands\QuitCommandHandler.h" />
+    <ClInclude Include="Commands\RdirCommandHandler.h" />
     <ClInclude Include="Commands\RenCommandHandler.h" />
     <ClInclude Include="Commands\SyncCommandHandler.h" />
     <ClInclude Include="fwsync-server.h" />
@@ -100,7 +102,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>

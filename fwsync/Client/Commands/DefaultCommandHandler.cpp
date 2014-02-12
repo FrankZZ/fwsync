@@ -17,8 +17,11 @@ namespace fwsync
 
 	}
 
-	void DefaultCommandHandler::process(Socket* socket, vector<string>& params)
+	void DefaultCommandHandler::process(Socket* socket, string szLine)
 	{
+		socket->writeline(szLine);
+		//socket->writeline("");
+
 		char line[MAXPATH + 1];
 
 		while (socket->readline(line, MAXPATH) > 0)

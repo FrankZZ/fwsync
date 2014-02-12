@@ -26,6 +26,7 @@
     <ClInclude Include="Commands\GetCommandHandler.h" />
     <ClInclude Include="Commands\PutCommandHandler.h" />
     <ClInclude Include="Commands\QuitCommandHandler.h" />
+    <ClInclude Include="Commands\RdirCommandHandler.h" />
     <ClInclude Include="Commands\SyncCommandHandler.h" />
     <ClInclude Include="fwsync-client.h" />
   </ItemGroup>
@@ -42,6 +43,7 @@
     <ClCompile Include="Commands\GetCommandHandler.cpp" />
     <ClCompile Include="Commands\PutCommandHandler.cpp" />
     <ClCompile Include="Commands\QuitCommandHandler.cpp" />
+    <ClCompile Include="Commands\RdirCommandHandler.cpp" />
     <ClCompile Include="Commands\SyncCommandHandler.cpp" />
     <ClCompile Include="fwsync-client.cpp" />
     <ClCompile Include="main.cpp" />

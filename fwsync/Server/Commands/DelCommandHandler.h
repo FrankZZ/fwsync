@@ -5,6 +5,7 @@
 #include "../../Shared/Models/socket.h"
 #include "time.h"
 #include "../../Shared/Models/Directory.h"
+#include <stdio.h>
 
 using namespace std;
 
@@ -18,7 +19,7 @@ namespace fwsync
 		DelCommandHandler(string);
 
 	public:
-		virtual void process(Socket*, vector<string>&);
+		virtual void process(Socket*, string);
 		virtual CommandHandler* clone();
 
 	private:

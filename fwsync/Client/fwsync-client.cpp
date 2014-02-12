@@ -40,11 +40,9 @@ namespace fwsync
 			if (szLine.size() == 0)
 				continue;
 
-			socket->writeline(szLine.c_str());
-
 			vector<string> params = vector<string>();
 
-			strsplit(szLine, params, ' ');
+			strsplit(szLine, params, ' ', 2);
 
 			if (params.size() > 0)
 			{
@@ -58,7 +56,7 @@ namespace fwsync
 				{
 					try
 					{
-						pCommand->process(socket, params);
+						pCommand->process(socket, szLine);
 					}
 					catch (const char* ex)
 					{
@@ -66,7 +64,7 @@ namespace fwsync
 					}
 				}
 				else
-					CommandFactory::create("DEFAULT")->process(socket, params);
+					CommandFactory::create("DEFAULT")->process(socket, szLine);
 
 				delete pCommand;
 			}
@@ -83,7 +81,7 @@ namespace fwsync
 		while (socket->readline(line, MAXPATH) > 0)
 		{
 			//vector<string> params = *new vector<string>();
-			cout << line << "\n";
+			cout << line << endl;
 		}
 	}
 }

@@ -17,16 +17,19 @@ namespace fwsync
 
 	}
 
-	void DelCommandHandler::process(Socket* socket, vector<string>& params)
+	void DelCommandHandler::process(Socket* socket, string szLine)
 	{
-		/*
+		vector<string> params = vector<string>();
+		strsplit(szLine, params, ' ', 2);
+
 		if (remove(params[1].c_str()) != 0)
 			throw("Cannot delete file.");
+
 		socket->writeline("File deleted.");
 		socket->writeline("");
-		*/
 		
-		throw("DELETING A FILE IS DISABLED");
+		
+		//throw("DELETING A FILE IS DISABLED");
 		
 	}
 

@@ -21,7 +21,7 @@ namespace fwsync
 		"Win32";
 #endif
 
-	static const int BUFFERSIZE = 4096;
+	static const int BUFFERSIZE = 20480;
 
 	static const char DELIMITER = '|';
 

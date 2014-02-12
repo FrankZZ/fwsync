@@ -17,7 +17,7 @@ namespace fwsync
 		DefaultCommandHandler(string);
 
 	public:
-		virtual void process(Socket*, vector<string>&);
+		virtual void process(Socket*, string);
 		virtual CommandHandler* clone();
 
 	private:

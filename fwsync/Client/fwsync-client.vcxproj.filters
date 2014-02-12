@@ -84,6 +84,9 @@
     <ClInclude Include="Commands\DirCommandHandler.h">
       <Filter>Header Files\Commands</Filter>
     </ClInclude>
+    <ClInclude Include="Commands\RdirCommandHandler.h">
+      <Filter>Header Files\Commands</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Commands\DefaultCommandHandler.cpp">
@@ -127,6 +130,9 @@
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
     <ClCompile Include="Commands\DirCommandHandler.cpp">
+      <Filter>Source Files\Commands</Filter>
+    </ClCompile>
+    <ClCompile Include="Commands\RdirCommandHandler.cpp">
       <Filter>Source Files\Commands</Filter>
     </ClCompile>
   </ItemGroup>

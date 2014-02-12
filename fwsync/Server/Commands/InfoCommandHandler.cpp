@@ -17,7 +17,7 @@ namespace fwsync
 
 	}
 
-	void InfoCommandHandler::process(Socket* socket, vector<string>& params)
+	void InfoCommandHandler::process(Socket* socket, string szLine)
 	{
 		socket->writeline("FWSync Server 0.1a");
 		socket->writeline("");

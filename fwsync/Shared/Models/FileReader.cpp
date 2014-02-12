@@ -6,8 +6,13 @@ namespace fwsync
 {
 	FileReader::FileReader(string szPath)
 		: m_szPath(szPath)
+		, m_isFile(m_szPath, ifstream::binary)
 	{
-		m_isFile = ifstream(m_szPath, ifstream::binary);
+
+		if (!m_isFile.is_open())
+		{
+			throw("cannot open file");
+		}
 	}
 
 	FileReader::~FileReader()
@@ -34,11 +39,13 @@ namespace fwsync
 			sSocket->writeline("-1");
 			throw("cannot open file");
 		}
-
+		cout << "Sending " << m_szPath << endl;
 		// Send total size to client
 		int iFileSize = this->getFileSize();
 
 		sSocket->writeline(to_string(iFileSize).c_str());
+		time_t tim = Directory::getLastModifiedTime(m_szPath);
+		sSocket->writeline(to_string(tim).c_str());
 
 		int iBytesToRead = iFileSize;
 		char buff[BUFFERSIZE];

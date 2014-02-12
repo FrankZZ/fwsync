@@ -1,23 +1,23 @@
-#include "DirCommandHandler.h"
+#include "RdirCommandHandler.h"
 
 using namespace std;
 
 namespace fwsync
 {
 
-	DirCommandHandler DirCommandHandler::m_dirCmdHandler(string("dir"));
+	RdirCommandHandler RdirCommandHandler::m_rdirCmdHandler(string("rdir"));
 
-	DirCommandHandler::DirCommandHandler(string sCommand) : CommandHandler(sCommand)
+	RdirCommandHandler::RdirCommandHandler(string sCommand) : CommandHandler(sCommand)
 	{
 
 	}
 
-	DirCommandHandler::DirCommandHandler()
+	RdirCommandHandler::RdirCommandHandler()
 	{
 
 	}
 
-	void DirCommandHandler::process(Socket* socket, string szLine)
+	void RdirCommandHandler::process(Socket* socket, string szLine)
 	{
 		vector<string> params = vector<string>();
 		strsplit(szLine, params, '|', 2);
@@ -56,8 +56,8 @@ namespace fwsync
 		}
 	}
 
-	CommandHandler* DirCommandHandler::clone()
+	CommandHandler* RdirCommandHandler::clone()
 	{
-		return new DirCommandHandler();
+		return new RdirCommandHandler();
 	}
 }

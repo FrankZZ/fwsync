@@ -17,11 +17,27 @@ namespace fwsync
 
 	}
 
-	void PutCommandHandler::process(Socket* socket, vector<string>& params)
+	void PutCommandHandler::process(Socket* socket, string szLine)
 	{
+		vector<string> params = vector<string>();
+		strsplit(szLine, params, ' ', 3);
+
 		if (params.size() != 3)
 			throw("SYNTAX: PUT [local file] [remote file]");
 		
+		socket->writeline(szLine);
+		char line[MAXPATH + 1];
+		
+		socket->readline(line, MAXPATH);
+
+		if (strcmp(line, "OK") != 0)
+		{
+			while (socket->readline(line, MAXPATH) > 0)
+			{
+				cout << line << endl;
+			}
+			throw("Aborted");
+		}
 
 		FileReader* fw = new FileReader(params[2]);
 
@@ -29,6 +45,10 @@ namespace fwsync
 
 		delete fw;
 
+		while (socket->readline(line, MAXPATH) > 0)
+		{
+			cout << line << endl;
+		}
 	}
 
 	void interrupt(int param)

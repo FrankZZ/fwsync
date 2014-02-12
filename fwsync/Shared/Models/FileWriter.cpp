@@ -6,10 +6,9 @@ namespace fwsync
 {
 	FileWriter::FileWriter(string szPath)
 		: m_szPath(szPath)
+		, m_osFile(szPath, ofstream::binary | ofstream::trunc)
 	{
-		Directory::createSubDirectories(szPath, true);
-
-		m_osFile = ofstream(szPath, ofstream::binary | ofstream::trunc);
+		
 		
 		if (m_osFile.bad())
 		{
@@ -29,6 +28,12 @@ namespace fwsync
 		sSocket->readline(buff, BUFFERSIZE);
 
 		int iFileSize = stoi(buff);
+
+		sSocket->readline(buff, BUFFERSIZE);
+
+		cout << "Receiving " << m_szPath << endl;
+
+		time_t lModTime = stoul(buff);
 
 		if (iFileSize >= 0)
 		{
@@ -53,6 +58,8 @@ namespace fwsync
 
 				cout << "\rProgress: " << (((long long)(iFileSize - iBytesToRead) * 100) / iFileSize) << "% " << (iFileSize - iBytesToRead) / 1000 << "/" << iFileSize / 1000 << " KB";
 			}
+			this->close();
+			Directory::setLastModifiedTime(m_szPath, lModTime);
 
 			cout << endl << "Done." << endl;
 		}

@@ -3,6 +3,9 @@
 #include <string>
 #include <vector>
 #include "../../Shared/Models/socket.h"
+#include "../../Shared/Models/Directory.h"
+#include "../../Shared/constants.h"
+#include "../../Shared/utility.h"
 #include "time.h"
 
 using namespace std;
@@ -17,7 +20,7 @@ namespace fwsync
 		SyncCommandHandler(string);
 
 	public:
-		virtual void process(Socket*, vector<string>&);
+		virtual void process(Socket*, string);
 		virtual CommandHandler* clone();
 
 	private:
